@@ -10,6 +10,12 @@ EXTRN _sub_1CF8E:PROC
 EXTRN _sub_15540:PROC
 EXTRN _sub_19BE1:PROC
 EXTRN _sub_19E94:PROC
+EXTRN _sub_11BFD:PROC
+EXTRN _copySomeMem:PROC
+EXTRN _sub_1CF64:PROC
+EXTRN _sub_1D178:PROC
+EXTRN _sub_1D190:PROC
+EXTRN _sub_1D200:PROC
 PUBLIC _commData
 PUBLIC _gameData
 PUBLIC _hercFlag
@@ -136,7 +142,7 @@ PUBLIC _word_3B14A
 PUBLIC _sub_21444
 PUBLIC _dword_3C01C
 PUBLIC _dword_3B4D4
-PUBLIC _sub_1CF64
+; _sub_1CF64 now provided by C
 PUBLIC _keyValue
 PUBLIC _word_380CE
 PUBLIC _dword_3B1FE
@@ -152,8 +158,9 @@ PUBLIC _word_3C5AA
 PUBLIC _word_3BE94
 PUBLIC _stru_3A95A
 PUBLIC _word_336E8
-PUBLIC _sub_1D190
-PUBLIC _sub_1D178
+; _sub_1D190 and _sub_1D178 now provided by C
+PUBLIC _word_339B4
+PUBLIC _word_3419C
 PUBLIC _word_3C028
 PUBLIC _word_3C03A
 PUBLIC _word_330C4
@@ -223,7 +230,7 @@ PUBLIC _word_3C8B6
 PUBLIC _aPressAnyKeyToP
 PUBLIC _word_3AA5C
 PUBLIC _aTraining
-PUBLIC _copySomeMem
+; _copySomeMem now provided by C
 PUBLIC _word_38FC4
 PUBLIC _waypoints
 PUBLIC _word_3C008
@@ -579,9 +586,7 @@ sub_11BC3 proc near
 sub_11BC3 endp
 ; ------------------------------seg000:0x1bfc------------------------------
 ; ------------------------------seg000:0x1bfd------------------------------
-sub_11BFD proc near
-    retn
-sub_11BFD endp
+sub_11BFD equ _sub_11BFD
 ; ------------------------------seg000:0x1c20------------------------------
 ; ------------------------------seg000:0x1c21------------------------------
 sub_11C21 proc near
@@ -619,9 +624,7 @@ _sub_121CA proc near
 _sub_121CA endp
 ; ------------------------------seg000:0x2276------------------------------
 ; ------------------------------seg000:0x229a------------------------------
-_copySomeMem proc near
-    retn
-_copySomeMem endp
+; _copySomeMem provided by C (EXTRN at top)
 ; ------------------------------seg000:0x22b7------------------------------
 ; ------------------------------seg000:0x22b8------------------------------
 sub_122B8 proc near
@@ -763,6 +766,8 @@ _setupDac endp
 sub_13B2F proc near
     retn
 sub_13B2F endp
+PUBLIC _sub_13B2F
+_sub_13B2F equ sub_13B2F
 ; ------------------------------seg000:0x3b44------------------------------
 ; ------------------------------seg000:0x3b86------------------------------
 sub_13B86 proc near
@@ -773,6 +778,8 @@ sub_13B86 endp
 sub_13B96 proc near
     retn
 sub_13B96 endp
+PUBLIC _sub_13B96
+_sub_13B96 equ sub_13B96
 ; ------------------------------seg000:0x3ba1------------------------------
 ; ------------------------------seg000:0x3ba2------------------------------
 sub_13BA2 proc near
@@ -1482,9 +1489,7 @@ sub_1CF32 proc near
 sub_1CF32 endp
 ; ------------------------------seg000:0xcf63------------------------------
 ; ------------------------------seg000:0xcf64------------------------------
-_sub_1CF64 proc near
-    retn
-_sub_1CF64 endp
+; _sub_1CF64 provided by C (EXTRN at top)
 ; ------------------------------seg000:0xcf8d------------------------------
 ; ------------------------------seg000:0xcf8e------------------------------
 sub_1CF8E equ _sub_1CF8E
@@ -1500,14 +1505,10 @@ _sub_1D008 proc near
 _sub_1D008 endp
 ; ------------------------------seg000:0xd177------------------------------
 ; ------------------------------seg000:0xd178------------------------------
-_sub_1D178 proc near
-    retn
-_sub_1D178 endp
+; _sub_1D178 provided by C (EXTRN at top)
 ; ------------------------------seg000:0xd18f------------------------------
 ; ------------------------------seg000:0xd190------------------------------
-_sub_1D190 proc near
-    retn
-_sub_1D190 endp
+; _sub_1D190 provided by C (EXTRN at top)
 ; ------------------------------seg000:0xd1a4------------------------------
 ; ------------------------------seg000:0xd1c8------------------------------
 sub_1D1C8 proc near
@@ -1520,9 +1521,7 @@ sub_1D1E8 proc near
 sub_1D1E8 endp
 ; ------------------------------seg000:0xd1ff------------------------------
 ; ------------------------------seg000:0xd200------------------------------
-sub_1D200 proc near
-    retn
-sub_1D200 endp
+sub_1D200 equ _sub_1D200
 ; ------------------------------seg000:0xd21d------------------------------
 ; ------------------------------seg000:0xd21e------------------------------
 sub_1D21E proc near
@@ -5372,7 +5371,7 @@ audio_jump_6d endp
 word_339B0 dw 10EAh
 byte_339B2 db 0
     db 0
-unk_339B4 db 0
+_word_339B4 db 0
     db 1
     db 2
     db 3
@@ -6546,7 +6545,7 @@ _byte_34197 db 6
 word_34198 dw 0
 byte_3419A db 0
     db 0
-byte_3419C db 0
+_word_3419C db 0
     db 1
     db 2
 byte_3419F db 3

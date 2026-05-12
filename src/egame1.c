@@ -15,6 +15,14 @@
 unsigned char far byte_228D0[0xadd4];
 unsigned char far byte_2D6A4[0x4844+0x9c8];
 
+// ==== seg000:0x1bfd scheduleTimedEvent ====
+void sub_11BFD(int arg_0, int arg_2) {
+    if (word_3370E != 0) {
+        keyValue = arg_0;
+        word_3370C = arg_2 * word_330C4 + word_336E8;
+    }
+}
+
 // ==== seg000:0x147 ====
 void drawCockpit() {
     sub_11E0E();
@@ -824,11 +832,6 @@ int drawString(int* arg_0, char *arg_2, int arg_4, int arg_6, int arg_8) {
     gfx_jump_05_drawString(arg_0, strupr(arg_2), strlen(arg_2));
 }
 
-// ==== seg000:0x5540 ====
-int sub_15540(int arg_0) {
-    return -(sub_154B7(arg_0) - 0x4000);
-}
-
 // ==== seg000:0x9be1 ====
 int sub_19BE1(int arg_0, int arg_2, int arg_4, int arg_6) {
     sub_19C84(arg_0, arg_2, arg_4, arg_6, 0, 0x13f, 0, 199, 1);
@@ -836,6 +839,6 @@ int sub_19BE1(int arg_0, int arg_2, int arg_4, int arg_6) {
 
 // ==== seg000:0x9e94 ====
 int sub_19E94(int arg_0, int arg_2, int arg_4) {
-    setDrawColor(arg_4);
+    sub_19E44(arg_4);
     sub_19BE1(arg_0, arg_2, arg_0, arg_2);
 }   
