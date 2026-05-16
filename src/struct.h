@@ -173,4 +173,13 @@ struct MissileSpec {
     int field_2;
 };
 
+struct FlightRecord {
+    char cx;
+    char cy;
+    char status;
+    char pad;
+    char unk4;
+    char unk5;
+};
+
 #endif // STRUCT_H

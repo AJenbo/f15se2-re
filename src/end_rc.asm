@@ -1001,6 +1001,8 @@ FUN_1000_0b0c proc near
     ret
 FUN_1000_0b0c endp
 
+PUBLIC _routine_146
+_routine_146:
 routine_146 proc near
     push BP
     mov BP,SP
@@ -10515,12 +10517,11 @@ _dat_4824 equ dat_4824
 _var_189 db 4 dup(?)
 _var_190 label word
 _var_190x db 2 dup(?)
-dat_4a2a db 720 dup(?)
+_flightRecords db 720 dup(?)
+dat_4a2a equ _flightRecords
 _var_191 db 518 dup(?)
 _var_192 db 2 dup(?)
 _var_193 db 2 dup(?)
-PUBLIC _flightRecords
-_flightRecords label byte
 _var_194 db ?
 _var_195 db ?
 _var_196 db ?

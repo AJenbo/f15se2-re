@@ -33,6 +33,7 @@ extern int far misc_jump_5a_keybuf(void);
 extern int far misc_jump_5b_getkey(void);
 extern int far misc_jump_5d_readJoy(int param);
 void routine_28(void);
+void routine_146(char *dst, char *src, int count);
 void routine_140(int src_seg, int src_off, int dst_seg, int dst_off, int count);
 int routine_69(void);
 void routine_70(int param_1);

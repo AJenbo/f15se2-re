@@ -504,7 +504,7 @@ var_188: Data1 VAR 481a
 dat_4824: Data1 VAR 4824
 var_189: Data1 VAR 4a24
 var_190: Data1 VAR 4a28
-dat_4a2a: Data1 VAR 4a2a
+flightRecords: Data1 VAR 4a2a
 var_191: Data1 VAR 4cfa
 var_192: Data1 VAR 4f00
 var_193: Data1 VAR 4f02
