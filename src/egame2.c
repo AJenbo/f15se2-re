@@ -8,6 +8,7 @@
 
 #include <dos.h>
 #include <memory.h>
+#include <stdlib.h>
 
 // ==== seg000:0xcf32 ====
 int sub_1CF32(unsigned int param)
@@ -1027,4 +1028,84 @@ void sub_16172()
     }
 
     word_336F8--;
+}
+
+// ==== seg000:0x7594 ====
+void sub_17594(int param_1)
+{
+    int p, a, b, c, d, e, f, g, h, i, j, k, l, m, n;
+
+    i = *(int16 *)&aFlogger[var_667 * 32 + 16];
+
+    m = sub_1660E(
+        *(int16 *)((char *)&word_3B204 + param_1 * 0x24),
+        *(int16 *)((char *)&word_3B206 + param_1 * 0x24),
+        stru_3B208[param_1].field_0,
+        i,
+        &d, &g);
+
+    word_336FA = 4;
+
+    if ((unsigned)m > (unsigned)g) {
+        /* close enough — increment heat */
+        *(int16 *)&stru_3B208[param_1].field_10[18] += ((word_330BA + word_330B8) * 16 + 0x20) >> ((planeFlags & 0x10) != 0);
+
+        if (*(int16 *)&stru_3B208[param_1].field_10[18] > 0xc0) {
+            word_3C09C++;
+            stru_3B208[param_1].field_10[9] |= 0x40;
+            sub_166BE();
+
+            j = param_1 % (word_330B8 + 1);
+
+            if (word_330B8 * 2 < word_3A946) goto end_launch;
+            if (stru_335C4[j].field_E != 0) goto end_launch;
+            if ((unsigned)g <= 8) goto end_launch;
+
+            if (abs(d - *(int16 *)&stru_3B208[param_1].field_10[0]) >= 0x1800) goto end_launch;
+
+            i = *(int16 *)&stru_3B208[param_1].field_10[14];
+
+            if (sams[i].field_8 <= (unsigned)g >> 1) goto end_launch;
+
+            if ((unsigned)(-(word_330B8 * 3 - 0x10)) >= (unsigned)g) goto end_launch;
+            if ((unsigned)g >= 0x1000) goto end_launch;
+            if (i == 0) goto end_launch;
+
+            /* launch missile into slot j */
+            stru_335C4[j].field_0 = *(int16 *)((char *)&stru_3B208[param_1] - 4);
+            stru_335C4[j].field_2 = *(int16 *)((char *)&stru_3B208[param_1] - 2);
+            stru_335C4[j].field_4 = stru_3B208[param_1].field_0 - 0x19;
+            stru_335C4[j].field_6 = sams[i].field_A >> 6;
+            stru_335C4[j].field_8 = *(int16 *)&stru_3B208[param_1].field_10[0];
+            stru_335C4[j].field_A = *(int16 *)&stru_3B208[param_1].field_10[2] - 0x400;
+            stru_335C4[j].field_C = *(int16 *)&stru_3B208[param_1].field_10[4];
+
+            n = stru_335C4[j].field_6;
+            stru_335C4[j].field_E = (int)(((long)sams[i].field_8 * 8L * (long)word_330C4) / (long)n);
+
+            *(int16 *)&stru_335C4[j].field_10[0] = i;
+            *(int16 *)&stru_335C4[j].field_10[6] = -param_1;
+
+            strcpy((char *)strBuf, (char *)&sams[i].field_0);
+            strcat((char *)strBuf, (char *)aFiredBy);
+            strcat((char *)strBuf, (char *)(var_667 * 32 + 0x2c8));
+            tempStrcpy((char *)strBuf);
+
+            makeSound(6, 2);
+            commData->restartFlag++;
+            sub_11BC3(param_1 + 0x20, 2);
+
+            if (sub_1D200(4) == 0) {
+                stru_3B208[param_1].field_10[8] |= 4;
+            }
+        end_launch:;
+        }
+        stru_3B208[param_1].field_10[8] |= 8;
+    } else {
+        stru_3B208[param_1].field_10[8] &= 0xf7;
+        *(int16 *)&stru_3B208[param_1].field_10[18] -= 0x20;
+    }
+
+    *(int16 *)&stru_3B208[param_1].field_10[18] =
+        sub_1CF64(*(int16 *)&stru_3B208[param_1].field_10[18], 0, 0xff);
 }

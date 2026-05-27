@@ -257,7 +257,7 @@ int routine_191();
 // ==== seg000:0x67b4 ====
 int sub_167B4();
 // ==== seg000:0x7594 ====
-int sub_17594();
+void sub_17594(int param_1);
 // ==== seg000:0x783a ====
 int sub_1783A();
 // ==== seg000:0x79ee ====
@@ -1757,6 +1757,7 @@ extern int16 var_661;
 extern int16 var_662;
 extern int16 var_663;
 extern int16 var_664;
+extern int16 var_667;
 extern int16 var_669;
 extern int16 var_670;
 extern int16 var_671;

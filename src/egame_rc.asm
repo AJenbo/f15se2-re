@@ -25,6 +25,7 @@ PUBLIC _aOnPatrol
 PUBLIC _aF15StrikeEagle
 PUBLIC _aNone
 EXTRN _sub_166BE:PROC
+EXTRN _sub_17594:PROC
 EXTRN _routine_191:PROC
 EXTRN _sub_1660E:PROC
 EXTRN _sub_11C21:PROC
@@ -619,7 +620,14 @@ PUBLIC _word_330B6
 PUBLIC _word_33096
 PUBLIC _word_330B8
 PUBLIC _var_669
+PUBLIC _var_667
 PUBLIC _var_670
+PUBLIC _word_336FA
+PUBLIC _word_3A946
+PUBLIC _word_3C09C
+PUBLIC _aFiredBy
+PUBLIC _word_3B204
+PUBLIC _word_3B206
 PUBLIC _word_3BF90
 
 PUBLIC _missileSpecIndex
@@ -7285,7 +7293,7 @@ LAB_1000_73d5:
     jmp LAB_1000_74eb
 LAB_1000_73de:
     push word ptr [BP + -22h]
-    call sub_17594
+    call _sub_17594
     add SP,2h
     jmp LAB_1000_74eb
 LAB_1000_73ea:
@@ -7457,7 +7465,9 @@ LAB_1000_758e:
 sub_167B4 endp
 ; ------------------------------seg000:0x7593------------------------------
 ; ------------------------------seg000:0x7594------------------------------
-sub_17594 proc near
+sub_17594 equ _sub_17594
+if 0
+ifdef REMOVED_SUB_17594
     push BP
     mov BP,SP
     sub SP,20h
@@ -7724,7 +7734,9 @@ LAB_1000_7816:
     pop BP
     ret
     nop
-sub_17594 endp
+    _removed_sub_17594 endp
+    endif
+endif
 ; ------------------------------seg000:0x7838------------------------------
 ; ------------------------------seg000:0x783a------------------------------
 ; sub_1783A proc near
@@ -16661,6 +16673,7 @@ word_336F6 dw 0FFFFh
 _word_336F6 equ word_336F6
 word_336F8 dw 1
 _word_336F8 equ word_336F8
+_word_336FA label byte
 word_336FA dw 0
 _word_336FC dw 0FFFFh
 _word_336FE dw 4
@@ -29559,6 +29572,7 @@ _word_38152 dw 0
 aFiring db ' firing ',0
     db 0 ;align 2
 word_3815E dw 0
+_aFiredBy label byte
 aFiredBy db ' fired by ',0
     db ' - ',0
 _aTakingOff label byte
@@ -36316,6 +36330,7 @@ _word_3A940 dw ?
 word_3A944 dw ?
 PUBLIC _word_3A944
 _word_3A944 equ word_3A944
+_word_3A946 label byte
 word_3A946 dw ?
 _unk_3A948 db ?
     db ?
@@ -36401,7 +36416,9 @@ _buf3d3_3 db 96h dup(?)
 _dword_3B1FE dd ?
 _unk_3B202 db ?
     db ?
+_word_3B204 label byte
 word_3B204 dw ?
+_word_3B206 label byte
 word_3B206 dw ?
     _stru_3B208 struc_3 <?>
 word_3B22C dw ?
@@ -38024,6 +38041,7 @@ word_3C048 dw ?
 _word_3C048 equ word_3C048
 _string_3C04A db 50h dup(?)
 _word_3C09A dw ?
+_word_3C09C label byte
 word_3C09C dw ?
 _word_3C09E dw ?
 word_3C0A0 dw ?
