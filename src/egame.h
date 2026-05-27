@@ -245,7 +245,7 @@ void sub_160D3(int *arg_0);
 // ==== seg000:0x613b ====
 void sub_1613B(void);
 // ==== seg000:0x6172 ====
-int sub_16172();
+void sub_16172();
 // ==== seg000:0x6346 ====
 int sub_16346();
 // ==== seg000:0x660e ====
