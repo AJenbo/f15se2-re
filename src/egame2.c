@@ -900,3 +900,75 @@ int sub_1783A(int arg_0, int arg_2)
         tempStrcpy((char *)strBuf);
     }
 }
+
+void sub_187EA(int param_1)
+{
+    int p;
+    int a;
+    int b;
+
+    placeString(param_1);
+    p = 1;
+    a = stru_3AA5E[param_1].field_6;
+    if (a & 0x80) goto done;
+
+    if (a & 0x1000) {
+        word_3C048--;
+    }
+
+    word_39808 = sub_12FDA(
+        (long)stru_3AA5E[param_1].field_0 << 5,
+        (0x8000L - (long)stru_3AA5E[param_1].field_2) << 5);
+
+    if (param_1 != 0) {
+        if (stru_3AA5E[param_1].field_4 == 0) {
+            p = 0x0c;
+        }
+        *((uint8 *)&stru_3AA5E[param_1].field_6) |= 0x80;
+        stru_3AA5E[param_1].field_4 = 0;
+        for (a = 0; a < 2; a++) {
+            if ((&word_3B146)[a * 9] == param_1) {
+                sub_189AA(a);
+                if (a == 0) {
+                    p |= 0x80;
+                } else {
+                    p |= 0x40;
+                }
+                word_336EE = word_336E8 + word_330C4;
+                makeSound(0, 2);
+            }
+        }
+        sub_11D10(p, param_1);
+        b = sub_1C864(param_1);
+    } else {
+        if (sub_1C8A4(param_1) != 0) {
+            b = (int)(char)byte_3BEC4[0];
+        } else {
+            b = (int)(char)byte_3C02A[0];
+        }
+        a = *word_39808;
+        if (b != a) {
+            byte_3BED8[a]++;
+            sub_11D10(2, *word_39808);
+        }
+        *(((uint8 *)&b) + 1) |= 1;
+        stru_3AA5E[param_1].field_C = b;
+    }
+
+    if (word_39808 != 0) {
+        sub_13224((char *)word_39808, sub_1CF32(b), (char)b);
+    }
+
+done:
+    word_336F6 = param_1;
+    makeSound(2, 2);
+    if (word_3C45C == 2 && param_1 == word_336F4) {
+        word_39604 = 1;
+    }
+    if (word_3C09A == 0) {
+        sub_195C9(word_3BEC0, word_3BED0);
+    }
+    if (word_330B8 < 2) {
+        sub_166BE();
+    }
+}

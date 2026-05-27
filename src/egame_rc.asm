@@ -175,6 +175,8 @@ EXTRN _sub_185BE:NEAR
 sub_185BE equ _sub_185BE
 EXTRN _sub_186F8:NEAR
 sub_186F8 equ _sub_186F8
+EXTRN _sub_187EA:NEAR
+sub_187EA equ _sub_187EA
 EXTRN _sub_1783A:NEAR
 sub_1783A equ _sub_1783A
 EXTRN _sub_194D0:near
@@ -9618,194 +9620,7 @@ sub_179EE endp
 ; sub_186F8 - replaced by C implementation
 ; ------------------------------seg000:0x87e8------------------------------
 ; ------------------------------seg000:0x87ea------------------------------
-sub_187EA proc near
-    push BP
-    mov BP,SP
-    sub SP,6h
-    push SI
-    push word ptr [BP + 4h]
-    call _placeString
-    add SP,2h
-    mov word ptr [BP + -2h],1h
-    mov BX,word ptr [BP + 4h]
-    mov CL,4h
-    shl BX,CL
-    mov SI,word ptr [BX + offset _stru_3AA5E + 6]
-    mov AX,SI
-    test AL,80h
-    jz LAB_1000_8813
-    jmp LAB_1000_895f
-LAB_1000_8813:
-    test AX,1000h
-    jz LAB_1000_881c
-    dec word ptr [word_3C048]
-LAB_1000_881c:
-    mov SI,word ptr [BP + 4h]
-    mov CL,4h
-    shl SI,CL
-    mov AX,word ptr [SI + offset _stru_3AA5E + 2]
-    sub DX,DX
-    sub AX,8000h
-    sbb DX,DX
-    neg AX
-    adc DX,0h
-    neg DX
-    mov CL,5h
-LAB_1000_8837:
-    shl AX,1h
-    rcl DX,1h
-    dec CL
-    jnz LAB_1000_8837
-    push DX
-    push AX
-    mov AX,word ptr [SI + offset _stru_3AA5E]
-    sub DX,DX
-    mov CL,5h
-LAB_1000_8849:
-    shl AX,1h
-    rcl DX,1h
-    dec CL
-    jnz LAB_1000_8849
-    push DX
-    push AX
-    call sub_12FDA
-    add SP,8h
-    mov word ptr [word_39808],AX
-    cmp word ptr [BP + 4h],0h
-    jnz LAB_1000_8865
-    jmp LAB_1000_88f8
-LAB_1000_8865:
-    mov BX,word ptr [BP + 4h]
-    mov CL,4h
-    shl BX,CL
-    cmp word ptr [BX + offset _stru_3AA5E + 4],0h
-    jnz LAB_1000_8878
-    mov word ptr [BP + -2h],0ch
-LAB_1000_8878:
-    mov SI,word ptr [BP + 4h]
-    mov CL,4h
-    shl SI,CL
-    or byte ptr [SI + offset _stru_3AA5E + 6],80h
-    mov word ptr [SI + offset _stru_3AA5E + 4],0h
-    mov word ptr [BP + -4h],0h
-    jmp LAB_1000_88b2
-    db 90h
-LAB_1000_8892:
-    mov AX,80h
-LAB_1000_8895:
-    or word ptr [BP + -2h],AX
-    mov AX,word ptr [_word_336E8]
-    add AX,word ptr [_word_330C4]
-    mov word ptr [word_336EE],AX
-    mov AX,2h
-    push AX
-    sub AX,AX
-    push AX
-    call makeSound
-    add SP,4h
-LAB_1000_88af:
-    inc word ptr [BP + -4h]
-LAB_1000_88b2:
-    cmp word ptr [BP + -4h],2h
-    jge LAB_1000_88de
-    mov AX,12h
-    imul word ptr [BP + -4h]
-    mov BX,AX
-    mov AX,word ptr [BP + 4h]
-    cmp word ptr [BX + offset word_3B146],AX
-    jnz LAB_1000_88af
-    push word ptr [BP + -4h]
-    call sub_189AA
-    add SP,2h
-    cmp word ptr [BP + -4h],0h
-    jz LAB_1000_8892
-    mov AX,40h
-    jmp LAB_1000_8895
-    db 90h
-LAB_1000_88de:
-    push word ptr [BP + 4h]
-    push word ptr [BP + -2h]
-    call sub_11D10
-    add SP,4h
-    push word ptr [BP + 4h]
-    call sub_1C864
-    add SP,2h
-    mov word ptr [BP + -6h],AX
-    jmp LAB_1000_8941
-LAB_1000_88f8:
-    push word ptr [BP + 4h]
-    call sub_1C8A4
-    add SP,2h
-    or AX,AX
-    jz LAB_1000_890a
-    mov AL,byte ptr [_byte_3BEC4]
-    jmp LAB_1000_890d
-LAB_1000_890a:
-    mov AL,byte ptr [_byte_3C02A]
-LAB_1000_890d:
-    cbw
-    mov word ptr [BP + -6h],AX
-    mov BX,word ptr [word_39808]
-    mov SI,word ptr [BX]
-    cmp AX,SI
-    jz LAB_1000_892f
-    inc byte ptr [SI + offset _byte_3BED8]
-    mov BX,word ptr [word_39808]
-    push word ptr [BX]
-    mov AX,2h
-    push AX
-    call sub_11D10
-    add SP,4h
-LAB_1000_892f:
-    or byte ptr [BP + -5h],1h
-    mov BX,word ptr [BP + 4h]
-    mov CL,4h
-    shl BX,CL
-    mov AX,word ptr [BP + -6h]
-    mov word ptr [BX + offset _stru_3AA5E + 12],AX
-LAB_1000_8941:
-    cmp word ptr [word_39808],0h
-    jz LAB_1000_895f
-    push word ptr [BP + -6h]
-    push word ptr [BP + -6h]
-    call sub_1CF32
-    add SP,2h
-    push AX
-    push word ptr [word_39808]
-    call sub_13224
-    add SP,6h
-LAB_1000_895f:
-    mov AX,word ptr [BP + 4h]
-    mov word ptr [word_336F6],AX
-    mov AX,2h
-    push AX
-    push AX
-    call makeSound
-    add SP,4h
-    cmp word ptr [_word_3C45C],2h
-    jnz LAB_1000_8985
-    mov AX,word ptr [_word_336F4]
-    cmp word ptr [BP + 4h],AX
-    jnz LAB_1000_8985
-    mov word ptr [_word_39604],1h
-LAB_1000_8985:
-    cmp word ptr [_word_3C09A],0h
-    jnz LAB_1000_899a
-    push word ptr [_word_3BED0]
-    push word ptr [_word_3BEC0]
-    call _sub_195C9
-    add SP,4h
-LAB_1000_899a:
-    cmp word ptr [word_330B8],2h
-    jge LAB_1000_89a4
-    call sub_166BE
-LAB_1000_89a4:
-    pop SI
-    mov SP,BP
-    pop BP
-    ret
-    nop
-sub_187EA endp
+; _sub_187EA - now in C (egame2.c)
 ; ------------------------------seg000:0x8aa4------------------------------
     nop
 ; ------------------------------seg000:0x8aa6------------------------------
@@ -17384,7 +17199,9 @@ _word_336E6 dw 0FFFFh
 _word_336E8 dw 0
 _word_336EA dw 0
 word_336EC dw 1
+PUBLIC _word_336EE
 word_336EE dw 0
+_word_336EE equ word_336EE
 word_336F0 dw 0
 _word_336F0 equ word_336F0
 _word_336F2 dw 0FFFFh
@@ -38734,7 +38551,9 @@ _word_3C042 equ word_3C042
 word_3C044 dw ?
 _word_3C044 equ word_3C044
 _word_3C046 dw ?
+PUBLIC _word_3C048
 word_3C048 dw ?
+_word_3C048 equ word_3C048
 _string_3C04A db 50h dup(?)
 _word_3C09A dw ?
 word_3C09C dw ?
