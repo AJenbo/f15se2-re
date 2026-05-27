@@ -121,7 +121,7 @@ void sub_12278(int arg_0);
 // ==== seg000:0x229a ====
 void copySomeMem(int arg_0);
 // ==== seg000:0x22b8 ====
-int sub_122B8(int param_0, int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7);
+int sub_122B8(int param_0, int param_1, long param_2, long param_4, long param_6);
 // ==== seg000:0x26b4 ====
 uint32 sub_126B4(int level, uint32 coord);
 // ==== seg000:0x273e ====
@@ -1757,7 +1757,11 @@ extern int16 var_350;
 #define var_352 (*(int16 *)((char *)&var_349 + 8))
 #define var_353 (*(int16 *)((char *)&var_349 + 10))
 #define var_354 (*(int16 *)((char *)&var_349 + 12))
+extern int16 var_141;
 extern int16 var_654;
+extern int16 var_657;
+extern int16 var_658;
+extern int16 var_659;
 extern int16 var_660;
 extern int16 var_661;
 extern int16 var_662;
