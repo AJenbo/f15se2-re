@@ -861,3 +861,42 @@ void sub_13816(int arg_0, int arg_1) {
         *(long *)((char *)&word_34A4C + p * 4) = (long)(-sub_13922(d) + word_3298E);
     }
 }
+
+// ==== seg000:0x783A ====
+int sub_1783A(int arg_0, int arg_2)
+{
+    int p;
+
+    p = *(int16 *)&stru_3B208[arg_0].field_10[6];
+    *(int16 *)&stru_3B208[arg_0].field_10[0] = (word_3AFA8 == 1) ? 0 : (int16)0x8000;
+    if (stru_3AA5E[arg_2].field_6 & 0x200) {
+        *(int16 *)((char *)&stru_3B208[arg_0] - 4) = word_3AFA8 * 3 + stru_3AA5E[arg_2].field_0;
+        *(int16 *)((char *)&stru_3B208[arg_0] - 2) = stru_3AA5E[arg_2].field_2 - word_3AFA8 * 12;
+        stru_3B208[arg_0].field_0 = 0x8c;
+        *(int16 *)&stru_3B208[arg_0].field_10[10] = 100;
+        *(uint8 *)((char *)&stru_3B208[arg_0].field_10[1]) += 0xfc;
+    } else {
+        *(int16 *)((char *)&stru_3B208[arg_0] - 4) = stru_3AA5E[arg_2].field_0;
+        *(int16 *)((char *)&stru_3B208[arg_0] - 2) = 0x1e * word_3AFA8 + stru_3AA5E[arg_2].field_2;
+        stru_3B208[arg_0].field_0 = 0x0c;
+        *(int16 *)&stru_3B208[arg_0].field_10[10] = 10;
+    }
+    stru_3B208[arg_0].field_2 = (long)(uint16)*(int16 *)((char *)&stru_3B208[arg_0] - 4) << 5;
+    stru_3B208[arg_0].field_6 = (long)(uint16)*(int16 *)((char *)&stru_3B208[arg_0] - 2) << 5;
+    *(int16 *)&stru_3B208[arg_0].field_10[2] = 0;
+    *(int16 *)&stru_3B208[arg_0].field_10[4] = 0;
+    *(uint16 *)&stru_3B208[arg_0].field_10[8] |= 0x403;
+    *(int16 *)((char *)&stru_3B208[arg_0] - 6) = arg_2;
+    *(int16 *)&stru_3B208[arg_0].field_10[12] = (int16)(((long)*(int16 *)&aFlogger[p * 32 + 12] << 11) * (long)word_330C4 / (long)*(int16 *)&aFlogger[p * 32 + 10]);
+    *(int16 *)&stru_3B208[arg_0].field_10[16] = sub_19A4D(stru_3AA5E[arg_2].field_0, stru_3AA5E[arg_2].field_2);
+    if (word_336FC == -1) {
+        stru_3B208[arg_0].field_10[9] &= 0xfe;
+    }
+    placeString(arg_2);
+    strcat((char *)strBuf, (char *)0x58bb);
+    strcat((char *)strBuf, (char *)(*(int16 *)&stru_3B208[arg_0].field_10[6] * 32 + 0x2c8));
+    strcat((char *)strBuf, (char *)aTakingOff);
+    if (arg_0 < word_3C046 - 4) {
+        tempStrcpy((char *)strBuf);
+    }
+}
